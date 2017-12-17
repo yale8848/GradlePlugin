@@ -7,13 +7,13 @@ public class MyPlugin implements Plugin<Project>{
 
     @Override
     void apply(Project project) {
-
+        project.extensions.create('apkdistconf', ApkDistExtension)
         project.task("apkdist") <<{
-            //project.extensions.create('apkdistconf', ApkDistExtension)
 
-            //def closure = project['apkdistconf'].nameMap
-            //println closure('wow!');
-            //println project['apkdistconf'].destDir
+
+            def closure = project['apkdistconf'].nameMap
+            println closure('wow!');
+            println project['apkdistconf'].destDir
 
             println "hello ,world"
         }
