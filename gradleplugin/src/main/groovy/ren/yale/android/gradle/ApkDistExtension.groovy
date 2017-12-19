@@ -1,4 +1,4 @@
-package ren.yale.android.gradle;
+package ren.yale.android.gradle
 
 import groovy.lang.Closure;
 

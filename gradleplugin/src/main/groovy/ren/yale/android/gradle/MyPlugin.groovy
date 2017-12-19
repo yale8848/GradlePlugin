@@ -1,4 +1,4 @@
-package ren.yale.android.gralde
+package ren.yale.android.gradle
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

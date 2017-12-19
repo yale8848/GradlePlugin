@@ -19,6 +19,13 @@ android {
     }
 
 }
+apkdistconf {
+    nameMap { name ->
+        println 'hello,' + name
+        return name
+    }
+    destDir 'your-distribution-dir'
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

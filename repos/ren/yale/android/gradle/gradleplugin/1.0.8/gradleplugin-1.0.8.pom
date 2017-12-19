@@ -4,5 +4,5 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ren.yale.android.gradle</groupId>
   <artifactId>gradleplugin</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.8</version>
 </project>

@@ -13,7 +13,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'ren.yale.android.gradle:gradleplugin:1.0.4'
+        classpath 'ren.yale.android.gradle:gradleplugin:1.0.8'
         
 
         // NOTE: Do not place your application dependencies here; they belong
