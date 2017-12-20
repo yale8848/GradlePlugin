@@ -3,14 +3,17 @@ apply plugin: 'groovy'
 dependencies {
     compile gradleApi()//gradle sdk
     compile localGroovy()//groovy sdk
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+   // compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.tools.build:gradle:3.0.1'
+    compile 'org.javassist:javassist:3.20.0-GA'
+    compile 'com.google.guava:guava:11.0.2'
 }
 
 apply plugin: 'maven'
 //
 //group和version在后面使用自定义插件的时候会用到
 group='ren.yale.android.gradle'
-version='1.0.8'
+version='1.1.8'
 
 uploadArchives {
     repositories {

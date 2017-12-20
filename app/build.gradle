@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'ren.yale.android.gradle'
+if (rootProject.ext.gradleplugin){
+    apply plugin: 'ren.yale.android.gradle'
+}
+
 
 android {
     compileSdkVersion 26
@@ -9,7 +12,6 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -19,18 +21,27 @@ android {
     }
 
 }
-apkdistconf {
-    nameMap { name ->
-        println 'hello,' + name
-        return name
+
+if (rootProject.ext.gradleplugin){
+    apkdistconf {
+        nameMap { name ->
+            println 'hello,' + name
+            return name
+        }
+        destDir 'your-distribution-dir'
     }
-    destDir 'your-distribution-dir'
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    //implementation 'io.reactivex:rxjava:1.2.4'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+   // implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+   // implementation 'com.alibaba:fastjson:1.1.67.android'
+
 }
