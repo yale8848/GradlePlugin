@@ -78,18 +78,28 @@ public class MyTransform extends Transform{
 
 
 
-                FileUtils.copyFile(jarInput.file, dest)
+               // FileUtils.copyFile(jarInput.file, dest)
 
                 if (jarInput.file.absolutePath.indexOf("com.squareup.retrofit2\\retrofit\\2.1.0")>0){
 
+                    Properties sysProperty=System.getProperties();
+                    String path = sysProperty.getProperty("java.io.tmpdir");
+                    String tmpName = path+File.separator+System.currentTimeMillis()+".jar";
+                    File ftmp = new File(tmpName);
+                    println ftmp.absolutePath
+                    FileUtils.copyFile(jarInput.file, ftmp);
+
                     println("---------start work-------------")
 
-                    pool.insertClassPath(dest.absolutePath);
+                    pool.insertClassPath(ftmp.absolutePath);
                     CtClass cc1 = pool.get("retrofit2.Retrofit");
                     CtMethod method = cc1.getDeclaredMethod("create");
-                    method.insertAt(138, "System.out.println(\"------------yale add------------\");");
+                    method.insertAt(138, "System.out.println(\"------------yale add1 ------------\");");
                     byte[] b = cc1.toBytecode();
-                    JarHandler.replaceJarFile(dest.absolutePath, b, "retrofit2/Retrofit.class");
+                    File nt = JarHandler.replaceJarFile(ftmp.absolutePath, b, "retrofit2/Retrofit.class");
+                    FileUtils.copyFile(nt, dest)
+                }else{
+                    FileUtils.copyFile(jarInput.file, dest)
                 }
             }
         }

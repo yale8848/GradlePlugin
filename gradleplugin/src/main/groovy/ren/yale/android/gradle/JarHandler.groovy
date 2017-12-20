@@ -3,7 +3,7 @@ import java.util.jar.JarFile
 import java.util.jar.JarOutputStream
 
 public class JarHandler{
-    public static void replaceJarFile(String jarPathAndName,byte[] fileByteCode,String fileName) throws IOException {
+    public static File replaceJarFile(String jarPathAndName,byte[] fileByteCode,String fileName) throws IOException {
         File jarFile = new File(jarPathAndName);
         File tempJarFile = new File(jarPathAndName + ".tmp");
         JarFile jar = new JarFile(jarFile);
@@ -92,5 +92,7 @@ public class JarHandler{
             } else
                 System.out.println("Could Not Delete JAR File");
         }
+
+        return tempJarFile;
     }
-    }
+}
